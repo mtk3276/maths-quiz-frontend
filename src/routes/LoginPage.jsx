@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./LoginPage.css";
 
 export default function LoginPage() {
     const navigate = useNavigate();
@@ -17,7 +18,7 @@ export default function LoginPage() {
             <div className="form-container">
                 <form onSubmit={handleLogin}>
                     <h2>Login to The Maths Club's Maths Quiz</h2>
-                    <div className="username">
+                    <div className="input-container username">
                         <label htmlFor="username" className="form-label">Username: </label>
                         <input 
                             type="text"
@@ -25,7 +26,7 @@ export default function LoginPage() {
                             id="username"
                             onChange={e => {setUsername(e.target.value)}} />
                     </div>
-                    <div className="password">
+                    <div className="input-container password">
                         <label htmlFor="password" className="form-label">Password: </label>
                         <input 
                             type="password"
