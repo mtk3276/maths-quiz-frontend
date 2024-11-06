@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./QuizPage.css";
 
 const questions = [
     { id: 1, question: "15 + 31", answer: "46" },
@@ -62,37 +63,35 @@ export default function QuizPage() {
         <div className="quiz">
             <h1>The Maths Club</h1>
             <h2>Quiz</h2>
-            <div className="quiz-question">
-                {
-                    currentQuestion ? (
-                        <div>
-                            <p className="question-text">{currentQuestion.question} =</p>
-                            <input 
-                                autoFocus
-                                required
-                                type="text"
-                                value={currentAnswer}
-                                placeholder="answer"
-                                className="answer"
-                                onKeyDown={handleKeyPress}
-                                onChange={e => handleAnswerChange(e, currentQuestion.id)} />
-                            <button 
-                                onClick={handleAnswerSubmit}
-                                className="answer-btn">
-                                    Next
-                            </button>
-                        </div>
-                    ) : (
-                        <div className="quiz-complete">
-                            <p>Quiz Complete!</p>
-                            <p>You scored: {score}/{questions.length}</p>
-                            <button onClick={handleLeaderboardRedirect} className="quiz-submit-btn">
-                                Go to leaderboard
-                            </button>
-                        </div>
-                    )
-                }
-            </div>
+            {
+                currentQuestion ? (
+                    <div className="quiz-question">
+                        <p className="question-text">{currentQuestion.question} =</p>
+                        <input 
+                            autoFocus
+                            required
+                            type="text"
+                            value={currentAnswer}
+                            placeholder="answer"
+                            className="answer"
+                            onKeyDown={handleKeyPress}
+                            onChange={e => handleAnswerChange(e, currentQuestion.id)} />
+                        <button 
+                            onClick={handleAnswerSubmit}
+                            className="answer-btn">
+                                Next
+                        </button>
+                    </div>
+                ) : (
+                    <div className="quiz-complete">
+                        <p>Quiz Complete!</p>
+                        <p>You scored: {score}/{questions.length}</p>
+                        <button onClick={handleLeaderboardRedirect} className="quiz-submit-btn">
+                            Go to leaderboard
+                        </button>
+                    </div>
+                )
+            }
         </div>
     )
 }
