@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useUser } from "../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 import "./QuizPage.css";
@@ -59,6 +59,12 @@ export default function QuizPage() {
     const handleLeaderboardRedirect = () => {
         navigate("/leaderboard")
     }
+
+    useEffect(() => {
+        if (!username) {
+            navigate("/")
+        }
+    }, [username]);
 
     const currentQuestion = questions[currentQuestionIndex];
  
