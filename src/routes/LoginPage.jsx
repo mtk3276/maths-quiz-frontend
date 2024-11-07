@@ -23,6 +23,7 @@ export default function LoginPage() {
                         <div className="input-container username">
                             <label htmlFor="username" className="form-label">Username: </label>
                             <input 
+                                required
                                 type="text"
                                 className="form-control" 
                                 id="username"
@@ -31,6 +32,7 @@ export default function LoginPage() {
                         <div className="input-container password">
                             <label htmlFor="password" className="form-label">Password: </label>
                             <input 
+                                required
                                 type="password"
                                 className="form-control" 
                                 id="password"
