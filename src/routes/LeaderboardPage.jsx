@@ -25,7 +25,7 @@ export default function LeaderboardPage() {
                                 </tr>
                             ))
                         }
-                        
+
                     </tbody>
                 </table>
             </div>

@@ -16,25 +16,28 @@ export default function LoginPage() {
     return (
         <>
             <div className="form-container">
+            <h2>The Maths Club Quiz </h2>
+            <h1>Login</h1>
                 <form onSubmit={handleLogin}>
-                    <h2>Login to The Maths Club's Maths Quiz</h2>
-                    <div className="input-container username">
-                        <label htmlFor="username" className="form-label">Username: </label>
-                        <input 
-                            type="text"
-                            className="form-control" 
-                            id="username"
-                            onChange={e => {setUsername(e.target.value)}} />
+                    <div className="login-container">
+                        <div className="input-container username">
+                            <label htmlFor="username" className="form-label">Username: </label>
+                            <input 
+                                type="text"
+                                className="form-control" 
+                                id="username"
+                                onChange={e => {setUsername(e.target.value)}} />
+                        </div>
+                        <div className="input-container password">
+                            <label htmlFor="password" className="form-label">Password: </label>
+                            <input 
+                                type="password"
+                                className="form-control" 
+                                id="password"
+                                onChange={e => {setUsername(e.target.value)}} />
+                        </div>
+                        <button type="submit" className="login-submit-btn">Log In</button>
                     </div>
-                    <div className="input-container password">
-                        <label htmlFor="password" className="form-label">Password: </label>
-                        <input 
-                            type="password"
-                            className="form-control" 
-                            id="password"
-                            onChange={e => {setUsername(e.target.value)}} />
-                    </div>
-                    <button type="submit" className="login-submit-btn">Log In</button>
                 </form>
             </div>
         </>

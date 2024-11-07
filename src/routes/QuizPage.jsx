@@ -61,8 +61,7 @@ export default function QuizPage() {
  
     return (
         <div className="quiz">
-            <h1>The Maths Club</h1>
-            <h2>Quiz</h2>
+            <h1>The Maths Club Quiz</h1>
             {
                 currentQuestion ? (
                     <div className="quiz-question">
