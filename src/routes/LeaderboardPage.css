@@ -1,8 +1,8 @@
 .leaderboard-page {
     width: 50vw;
     height: 75vh;
-    background-color: #83C5BE;
-    color: #EDF6F9;
+    background-color: var(--colour-primary);
+    color: var(--colour-light);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -28,19 +28,20 @@ thead {
 }
 
 tr {
-    border-bottom: 2px solid #E29578;
+    border-bottom: 2px solid var(--colour-tertiary);
     text-align: left;
 }
 
 th {
-    background-color: #E29578;
+    font-weight: bold;
+    background-color: var(--colour-tertiary);
     padding: 8px;
     border: none;
 }
 
 td {
-    background-color: #FFDDD2;
-    color: #006D77;
+    background-color: var(--colour-neutral);
+    color: var(--colour-secondary);
     padding: 8px;
     border: none;
 }

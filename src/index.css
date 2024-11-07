@@ -1,5 +1,5 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Montserrat, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -11,6 +11,13 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --heading-font: Bodoni Moda, serif;
+  --colour-primary: #83C5BE;
+  --colour-secondary: #006D77;
+  --colour-tertiary: #E29578;
+  --colour-light: #EDF6F9;
+  --colour-neutral: #FFDDD2;
 }
 
 a {
@@ -30,8 +37,13 @@ body {
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
+h1, h2 {
+  font-family: var(--heading-font);
+  font-optical-sizing: none;
+  font-weight: 600;
+  font-style: normal;
+  color: var(--colour-secondary);
+  font-size: 48px;
   line-height: 1.1;
 }
 
