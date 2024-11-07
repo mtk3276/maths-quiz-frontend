@@ -1,0 +1,46 @@
+.leaderboard-page {
+    width: 50vw;
+    height: 75vh;
+    background-color: #83C5BE;
+    color: #EDF6F9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.leaderboard-container {
+    margin: 5% 0;
+    height: 60%;
+    overflow-y: auto;
+}
+
+.leaderboard {
+    width: 20vw;
+}
+
+thead {
+    top: 0;
+    position: sticky;
+}
+
+tr {
+    border-bottom: 2px solid #E29578;
+    text-align: left;
+}
+
+th {
+    background-color: #E29578;
+    padding: 8px;
+    border: none;
+}
+
+td {
+    background-color: #FFDDD2;
+    color: #006D77;
+    padding: 8px;
+    border: none;
+}
