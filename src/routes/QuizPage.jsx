@@ -14,10 +14,9 @@ const questions = [
 export default function QuizPage() {
     const navigate = useNavigate();
 
-    const { username } = useUser();
+    const { username, score, setScore } = useUser();
 
     const [answers, setAnswers] = useState({});
-    const [score, setScore] = useState(0);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [currentAnswer, setCurrentAnswer] = useState("");
 
