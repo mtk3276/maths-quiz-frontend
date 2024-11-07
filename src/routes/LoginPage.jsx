@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../contexts/UserContext";
 import "./LoginPage.css";
 
 export default function LoginPage() {
     const navigate = useNavigate();
     
-    const [username, setUsername] = useState("");
+    const [input, setInput] = useState("");
+    const { setUsername } = useUser();
 
     function handleLogin(e) {
         e.preventDefault();
-        setUsername(e.target.value);
+        setUsername(input);
         navigate("/quiz")
     }
 
@@ -27,7 +29,7 @@ export default function LoginPage() {
                                 type="text"
                                 className="form-control" 
                                 id="username"
-                                onChange={e => {setUsername(e.target.value)}} />
+                                onChange={e => {setInput(e.target.value)}} />
                         </div>
                         <div className="input-container password">
                             <label htmlFor="password" className="form-label">Password: </label>
@@ -35,8 +37,7 @@ export default function LoginPage() {
                                 required
                                 type="password"
                                 className="form-control" 
-                                id="password"
-                                onChange={e => {setUsername(e.target.value)}} />
+                                id="password"/>
                         </div>
                         <button type="submit" className="login-submit-btn">Log In</button>
                     </div>
