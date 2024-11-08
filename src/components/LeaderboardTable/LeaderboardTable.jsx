@@ -21,7 +21,6 @@ export default function LeaderboardTable({ scoreData, currentUser }) {
                             </tr>
                         ))
                     }
-
                 </tbody>
             </table>
         </>
