@@ -6,7 +6,6 @@ import './App.css'
 
 function App() {
   return (
-    <>
       <Router>
         <Routes>
           <Route path="/" element={<LoginPage />} />
@@ -14,7 +13,6 @@ function App() {
           <Route path="/leaderboard" element={<LeaderboardPage />} />
         </Routes>
       </Router>
-    </>
   )
 }
 

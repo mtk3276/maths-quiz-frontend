@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useUser } from "../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 import "./QuizPage.css";
 
@@ -13,8 +14,9 @@ const questions = [
 export default function QuizPage() {
     const navigate = useNavigate();
 
+    const { username, score, setScore } = useUser();
+
     const [answers, setAnswers] = useState({});
-    const [score, setScore] = useState(0);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [currentAnswer, setCurrentAnswer] = useState("");
 
@@ -57,10 +59,17 @@ export default function QuizPage() {
         navigate("/leaderboard")
     }
 
+    useEffect(() => {
+        if (!username) {
+            navigate("/")
+        }
+    }, [username]);
+
     const currentQuestion = questions[currentQuestionIndex];
  
     return (
         <div className="quiz">
+            <h3>Hi, {username}! Welcome to</h3>
             <h1>The Maths Club Quiz</h1>
             {
                 currentQuestion ? (
