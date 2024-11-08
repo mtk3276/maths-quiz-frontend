@@ -1,7 +1,9 @@
-
-
 .leaderboard {
     width: 20vw;
+}
+
+.currentUserRow td {
+    background-color: var(--colour-light);
 }
 
 thead {
