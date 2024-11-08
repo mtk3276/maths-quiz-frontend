@@ -11,6 +11,7 @@ export const scores = [
     { username: "Bob", score: 1 },
     { username: "Dick", score: 1 },
     { username: "John", score: 3 },
+    { username: "Jack", score: 0 },
     { username: "Zahra", score: 3 },
     { username: "Is\'haaq", score: 5 },
     { username: "Betty", score: 4 },

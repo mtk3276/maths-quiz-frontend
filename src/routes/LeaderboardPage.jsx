@@ -1,33 +1,35 @@
-import { scores } from "./scores"
+import { scores as initialScores } from "./scores"
+import { useUser } from "../contexts/UserContext"
 import "./LeaderboardPage.css"
+import { useEffect, useState } from "react";
+import LeaderboardTable from "./LeaderboardTable";
 
 export default function LeaderboardPage() {
+    const {username, score} = useUser();
+    const [scores, setScores] = useState(initialScores);
+
+    useEffect(() => {
+        if (username) {
+            const userIndex = scores.findIndex(x => x.username.toLowerCase() === username.toLowerCase());
+            
+            if (userIndex < 0) {
+                // If the user doesn't exist, add a new score entry
+                initialScores.push({ username: username, score: score });
+            } else {
+                // If the user exists, update their score
+                initialScores[userIndex].score = score
+            }
+        }
+
+        setScores([...initialScores]);
+    }, []);
+
     return (
         <div className="leaderboard-page">
             <h2>The Maths Club Quiz</h2>
             <h1>Leaderboard</h1>
             <div className="leaderboard-container">
-                <table className="leaderboard">
-                    <thead>
-                        <tr>
-                            <th>Username</th>
-                            <th>Score</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            scores
-                                .sort( (a, b) => b.score > a.score ? 1 : -1 )
-                                .map(d => (
-                                <tr>
-                                    <td>{d.username}</td>
-                                    <td>{d.score}</td>
-                                </tr>
-                            ))
-                        }
-
-                    </tbody>
-                </table>
+                <LeaderboardTable scoreData={scores}/>
             </div>
         </div>
     )
