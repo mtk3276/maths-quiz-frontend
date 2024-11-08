@@ -1,6 +1,5 @@
 import { scores as initialScores } from "./scores"
 import { useUser } from "../contexts/UserContext"
-import "./LeaderboardPage.css"
 import { useEffect, useState } from "react";
 import LeaderboardTable from "../components/LeaderboardTable/LeaderboardTable";
 
@@ -29,7 +28,7 @@ export default function LeaderboardPage() {
             <h2>The Maths Club Quiz</h2>
             <h1>Leaderboard</h1>
             <div className="leaderboard-container">
-                <LeaderboardTable scoreData={scores}/>
+                <LeaderboardTable scoreData={scores} currentUser={username}/>
             </div>
         </div>
     )

@@ -17,31 +17,3 @@
     height: 60%;
     overflow-y: auto;
 }
-
-.leaderboard {
-    width: 20vw;
-}
-
-thead {
-    top: 0;
-    position: sticky;
-}
-
-tr {
-    border-bottom: 2px solid var(--colour-tertiary);
-    text-align: left;
-}
-
-th {
-    font-weight: bold;
-    background-color: var(--colour-tertiary);
-    padding: 8px;
-    border: none;
-}
-
-td {
-    background-color: var(--colour-neutral);
-    color: var(--colour-secondary);
-    padding: 8px;
-    border: none;
-}
