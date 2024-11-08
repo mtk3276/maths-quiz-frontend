@@ -2,7 +2,7 @@ import { scores as initialScores } from "./scores"
 import { useUser } from "../contexts/UserContext"
 import "./LeaderboardPage.css"
 import { useEffect, useState } from "react";
-import LeaderboardTable from "./LeaderboardTable";
+import LeaderboardTable from "../components/LeaderboardTable/LeaderboardTable";
 
 export default function LeaderboardPage() {
     const {username, score} = useUser();
