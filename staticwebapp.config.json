@@ -11,6 +11,12 @@
       "methods": [
         "get"
       ]
+    },
+    {
+      "route": "/api/score",
+      "methods": [
+        "post"
+      ]
     }
   ]
 }
