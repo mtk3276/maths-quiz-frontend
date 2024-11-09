@@ -4,6 +4,7 @@ import QuizPage from "./routes/QuizPage";
 import LeaderboardPage from "./routes/LeaderboardPage";
 import { loader as quizLoader } from "./loaders/quizLoader";
 import { loader as leaderboardLoader } from "./loaders/leaderboardLoader";
+import { action, action as submitScoreAction } from "./actions/submitScoreAction";
 
 const routes = [
     {
@@ -23,6 +24,10 @@ const routes = [
                 path: "/leaderboard",
                 element: <LeaderboardPage />,
                 loader: leaderboardLoader,
+            },
+            {
+                path: "/submit-score",
+                action: submitScoreAction,
             }
         ]
     }

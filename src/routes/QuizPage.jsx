@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useUser } from "../contexts/UserContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Form } from "react-router-dom";
 import { useLoaderData } from "react-router-dom";
 import "./QuizPage.css";
 
@@ -49,10 +49,6 @@ export default function QuizPage() {
         }
     }
 
-    const handleLeaderboardRedirect = () => {
-        navigate("/leaderboard")
-    }
-
     useEffect(() => {
         if (!username) {
             navigate("/")
@@ -91,9 +87,15 @@ export default function QuizPage() {
                     <div className="quiz-complete">
                         <p>Quiz Complete!</p>
                         <p>You scored: {score}/{questions.length}</p>
-                        <button onClick={handleLeaderboardRedirect} className="quiz-submit-btn">
-                            Go to leaderboard
-                        </button>
+                        <Form method="POST" action="/submit-score">
+                            <input type="hidden" name="username" value={username} />
+                            <input type="hidden" name="score" value={score} />
+                            <button 
+                                type="submit" 
+                                className="quiz-submit-btn">
+                                Go to leaderboard
+                            </button>
+                        </Form>
                     </div>
                 )
             }
