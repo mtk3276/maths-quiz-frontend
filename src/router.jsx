@@ -14,11 +14,27 @@ const routes = [
             },
             {
                 path: "/quiz",
-                element: <QuizPage />
+                element: <QuizPage />,
+                loader: async () => {
+                    const response = await fetch("/api/questions");
+                    if (response.status === 500) {
+                        throw new Response("Internal Server Error", {status: 500});
+                    }
+
+                    return response.json();
+                }
             },
             {
                 path: "/leaderboard",
-                element: <LeaderboardPage />
+                element: <LeaderboardPage />,
+                loader: async () => {
+                    const response = await fetch("/api/score/leaderboard");
+                    if (response.status === 500) {
+                        throw new Response("Internal Server Error", {status: 500});
+                    }
+                    
+                    return response.json();
+                }
             }
         ]
     }

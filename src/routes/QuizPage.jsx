@@ -1,18 +1,12 @@
 import { useEffect, useState } from "react";
 import { useUser } from "../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import "./QuizPage.css";
-
-const questions = [
-    { id: 1, question: "15 + 31", answer: "46" },
-    { id: 2, question: "22 - 14", answer: "8" },
-    { id: 3, question: "92 - 6", answer: "86" },
-    { id: 4, question: "24 + 27", answer: "51" },
-    { id: 5, question: "17 - 5", answer: "12" },
-]
 
 export default function QuizPage() {
     const navigate = useNavigate();
+    const questions = useLoaderData();
 
     const { username, score, setScore } = useUser();
 
@@ -35,16 +29,16 @@ export default function QuizPage() {
         }
     }
 
-    const handleAnswerChange = (e, id) => {
+    const handleAnswerChange = (e, questionNumber) => {
         setCurrentAnswer(e.target.value);
 
-        setAnswers(prev => ({ ...prev, [id]: currentAnswer }));
+        setAnswers(prev => ({ ...prev, [questionNumber]: currentAnswer }));
     }
 
     const handleAnswerSubmit = () => {
         if (validateAnswer()) {
-            const id = currentQuestionIndex+1;
-            const correctAnswer = questions.find(q => q.id === id).answer;
+            const questionNumber = currentQuestionIndex+1;
+            const correctAnswer = questions.find(q => q.questionNumber === questionNumber).correctAnswer;
 
             if (currentAnswer == correctAnswer) {
                 setScore(prevScore => prevScore + 1);
@@ -68,27 +62,30 @@ export default function QuizPage() {
     const currentQuestion = questions[currentQuestionIndex];
  
     return (
-        <div className="quiz">
+        <div className="quiz-container">
             <h3>Hi, {username}! Welcome to</h3>
             <h1>The Maths Club Quiz</h1>
             {
                 currentQuestion ? (
-                    <div className="quiz-question">
-                        <p className="question-text">{currentQuestion.question} =</p>
-                        <input 
-                            autoFocus
-                            required
-                            type="text"
-                            value={currentAnswer}
-                            placeholder="answer"
-                            className="answer"
-                            onKeyDown={handleKeyPress}
-                            onChange={e => handleAnswerChange(e, currentQuestion.id)} />
-                        <button 
-                            onClick={handleAnswerSubmit}
-                            className="answer-btn">
-                                Next
-                        </button>
+                    <div className="quiz">
+                        <h3>Question {currentQuestion.questionNumber}</h3>
+                        <div className="quiz-question">
+                            <p className="question-text">{currentQuestion.questionText} =</p>
+                            <input 
+                                autoFocus
+                                required
+                                type="text"
+                                value={currentAnswer}
+                                placeholder="answer"
+                                className="answer"
+                                onKeyDown={handleKeyPress}
+                                onChange={e => handleAnswerChange(e, currentQuestion.questionNumber)} />
+                            <button 
+                                onClick={handleAnswerSubmit}
+                                className="answer-btn">
+                                    Next
+                            </button>
+                        </div>
                     </div>
                 ) : (
                     <div className="quiz-complete">
