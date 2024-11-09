@@ -2,6 +2,9 @@ import App from "./App";
 import LoginPage from "./routes/LoginPage";
 import QuizPage from "./routes/QuizPage";
 import LeaderboardPage from "./routes/LeaderboardPage";
+import { loader as quizLoader } from "./loaders/quizLoader";
+import { loader as leaderboardLoader } from "./loaders/leaderboardLoader";
+import { action, action as submitScoreAction } from "./actions/submitScoreAction";
 
 const routes = [
     {
@@ -15,26 +18,16 @@ const routes = [
             {
                 path: "/quiz",
                 element: <QuizPage />,
-                loader: async () => {
-                    const response = await fetch("/api/questions");
-                    if (response.status === 500) {
-                        throw new Response("Internal Server Error", {status: 500});
-                    }
-
-                    return response.json();
-                }
+                loader: quizLoader,
             },
             {
                 path: "/leaderboard",
                 element: <LeaderboardPage />,
-                loader: async () => {
-                    const response = await fetch("/api/score/leaderboard");
-                    if (response.status === 500) {
-                        throw new Response("Internal Server Error", {status: 500});
-                    }
-                    
-                    return response.json();
-                }
+                loader: leaderboardLoader,
+            },
+            {
+                path: "/submit-score",
+                action: submitScoreAction,
             }
         ]
     }
