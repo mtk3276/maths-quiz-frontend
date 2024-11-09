@@ -62,27 +62,30 @@ export default function QuizPage() {
     const currentQuestion = questions[currentQuestionIndex];
  
     return (
-        <div className="quiz">
+        <div className="quiz-container">
             <h3>Hi, {username}! Welcome to</h3>
             <h1>The Maths Club Quiz</h1>
             {
                 currentQuestion ? (
-                    <div className="quiz-question">
-                        <p className="question-text">{currentQuestion.questionText} =</p>
-                        <input 
-                            autoFocus
-                            required
-                            type="text"
-                            value={currentAnswer}
-                            placeholder="answer"
-                            className="answer"
-                            onKeyDown={handleKeyPress}
-                            onChange={e => handleAnswerChange(e, currentQuestion.questionNumber)} />
-                        <button 
-                            onClick={handleAnswerSubmit}
-                            className="answer-btn">
-                                Next
-                        </button>
+                    <div className="quiz">
+                        <h3>Question {currentQuestion.questionNumber}</h3>
+                        <div className="quiz-question">
+                            <p className="question-text">{currentQuestion.questionText} =</p>
+                            <input 
+                                autoFocus
+                                required
+                                type="text"
+                                value={currentAnswer}
+                                placeholder="answer"
+                                className="answer"
+                                onKeyDown={handleKeyPress}
+                                onChange={e => handleAnswerChange(e, currentQuestion.questionNumber)} />
+                            <button 
+                                onClick={handleAnswerSubmit}
+                                className="answer-btn">
+                                    Next
+                            </button>
+                        </div>
                     </div>
                 ) : (
                     <div className="quiz-complete">
