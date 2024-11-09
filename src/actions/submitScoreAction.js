@@ -1,5 +1,5 @@
 import { redirect } from "react-router-dom";
-import axios from "axios";
+import axiosInstance from "../axiosInstance";
 
 export async function action ({ request }) {
     const formData = await request.formData();
@@ -7,8 +7,8 @@ export async function action ({ request }) {
     const score = formData.get("score");
 
     try {
-        const response = await axios.post(
-            "/api/score",
+        const response = await axiosInstance.post(
+            "/score",
             { username, score }, 
             { headers: { "Content-Type": "application/json" } }
         );
