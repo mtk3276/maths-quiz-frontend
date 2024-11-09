@@ -1,8 +1,14 @@
-export async function loader() {
-    const response = await fetch("/api/questions");
-    if (response.status === 500) {
-        throw new Response("Internal Server Error", {status: 500});
-    }
+import axios from "axios";
 
-    return response.json();
-}
+export async function loader() {
+    try {
+        const response = await axios.get("/api/questions");
+        return response.data;
+    } catch (error) {
+        if (error.response && error.response.status === 500) {
+            throw new Error("Internal Server Error");
+        } else {
+            throw new Error(error.message);
+        }
+    }
+};
