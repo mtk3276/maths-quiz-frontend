@@ -1,8 +1,8 @@
-import axios from "axios";
+import axiosInstance from "../axiosInstance";
 
 export async function loader() {
     try {
-        const response = await axios.get("/api/questions");
+        const response = await axiosInstance.get("/questions");
         return response.data;
     } catch (error) {
         if (error.response && error.response.status === 500) {
