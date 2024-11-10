@@ -5,6 +5,13 @@
     },
     {
       "route": "/leaderboard"
+    },
+    {
+      "route": "/api/*",
+      "methods": [
+        "get",
+        "post"
+      ]
     }
   ]
 }
