@@ -2,6 +2,9 @@
   "routes": [
     {
       "route": "/quiz"
+    },
+    {
+      "route": "/leaderboard"
     }
   ]
 }
