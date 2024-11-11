@@ -61,3 +61,11 @@ form {
 .login-submit-btn:focus {
     border-color: var(--colour-neutral);
 }
+
+.form-container .login-tooltip {
+    padding: 10px;
+    font-size: large;
+    font-weight: bold;
+    color: var(--colour-secondary);
+    background-color: var(--colour-tertiary);
+}
